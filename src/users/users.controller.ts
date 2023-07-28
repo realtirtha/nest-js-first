@@ -27,4 +27,15 @@ export class UsersController {
             }
         ];
     }
+
+    @Get('posts/comments')
+    getUsersPostComments(){
+        return[
+            {
+                id:1,
+                title: 'post 1',
+                comments: []
+            }
+        ]
+    }
 }
