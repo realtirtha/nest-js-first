@@ -10,6 +10,11 @@ export class UsersController {
         return[{username:'Tirtha', mail:'tirtha@mail.com'}]
     }
 
+    @Get('test')
+    testGet(){
+        return{key:'isReturned?'};
+    }
+
     @Post('create')
     createUser(@Body() userData:CreateUserDto){
         console.log(userData);
