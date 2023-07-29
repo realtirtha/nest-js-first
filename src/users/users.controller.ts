@@ -20,4 +20,10 @@ export class UsersController {
         console.log(userData);
         return{};
     }
+
+    @Get(':id')
+    getUserById(@Req() request:Request, @Res() response: Response){
+        console.log(request.params);
+        response.send('');
+    }
 }
