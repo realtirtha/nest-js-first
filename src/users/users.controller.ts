@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res, Param, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, Param, Query, UsePipes, ValidationPipe, ParseIntPipe } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CreateUserDto } from './dtos/CreateUser.dto';
 
@@ -23,9 +23,9 @@ export class UsersController {
         return{};
     }
 
-    @Get(':id/:postId')
-    getUserById(@Param('id')id: string, @Param('postId') postId: string){
+    @Get(':id')
+    getUserById(@Param('id', ParseIntPipe) id:number){
         console.log(id);
-        return {id, postId};
+        return {id};
     }
 }
