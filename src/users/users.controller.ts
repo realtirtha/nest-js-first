@@ -11,9 +11,8 @@ export class UsersController {
     }
 
     @Get()
-    getUsers(@Query('sortDesc', ParseBoolPipe) sortDesc: boolean){
-        console.log(sortDesc);
-        return[{username:'Tirtha', mail:'tirtha@mail.com'}]
+    getUsers(){
+        return this.userService.fetchUsers();
     }
 
     @Get('test')
