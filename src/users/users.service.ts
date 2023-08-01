@@ -21,4 +21,8 @@ export class UsersService {
         return;
 
     }
+
+    fetchUserById(id:number){
+        return {id:1, username: 'Amit', mail: "amit@email.com"}
+    }
 }
