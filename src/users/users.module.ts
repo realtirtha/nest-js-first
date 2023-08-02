@@ -2,6 +2,7 @@ import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/c
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { ExampleMiddleware } from './middlewares/example.middleware';
+import { AnotherMiddleware } from './middlewares/another.middleware';
 
 @Module({
   controllers: [UsersController],
@@ -9,7 +10,17 @@ import { ExampleMiddleware } from './middlewares/example.middleware';
 })
 export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer){
-    consumer.apply(ExampleMiddleware).forRoutes(
+    consumer.apply(AnotherMiddleware).forRoutes(
+      {
+        path: 'users',
+        method: RequestMethod.GET,
+        },
+        {
+          path: 'users/:id',
+          method: RequestMethod.GET,
+          },
+    )
+    .apply(ExampleMiddleware).forRoutes(
       {
       path: 'users',
       method: RequestMethod.GET,
@@ -18,6 +29,6 @@ export class UsersModule implements NestModule {
         path: 'users/:id',
         method: RequestMethod.GET,
         },
-    ).apply();
+    );
   }  
 }
