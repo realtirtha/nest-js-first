@@ -23,6 +23,6 @@ export class UsersService {
     }
 
     fetchUserById(id:number){
-        return {id:1, username: 'Amit', mail: "amit@email.com"}
+        return {id, username: 'Amit', mail:'amit@email.com'};
     }
 }
