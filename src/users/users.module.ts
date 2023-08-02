@@ -1,7 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { ExampleMiddleware } from 'src/example/example.middleware';
+import { ExampleMiddleware } from './middlewares/example.middleware';
 
 @Module({
   controllers: [UsersController],
@@ -18,6 +18,6 @@ export class UsersModule implements NestModule {
         path: 'users/:id',
         method: RequestMethod.GET,
         },
-    );
+    ).apply();
   }  
 }
