@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, Req, Res, Param, Query, UsePipes, ValidationPipe, ParseIntPipe, ParseBoolPipe, HttpException, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, Param, Query, UsePipes, ValidationPipe, ParseIntPipe, ParseBoolPipe, HttpException, HttpStatus, UseGuards } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CreateUserDto } from './dtos/CreateUser.dto';
 import { UsersService } from './users.service';
 import { ValidateCreateUserPipe } from './pipes/validate-create-user/validate-create-user.pipe';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -12,6 +13,7 @@ export class UsersController {
     }
 
     @Get()
+    @UseGuards(AuthGuard)
     getUsers(){
         return this.userService.fetchUsers();
     }
